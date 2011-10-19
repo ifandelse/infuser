@@ -7,6 +7,6 @@
     "extensions": { "uglify": "min", "gzip": "gz" },
     "wrap": {
         "prefix": "(function(global, undefined) {",
-        "suffix": "global.fetcher = fetcher; })(window);"
+        "suffix": "global.infuser = infuser; })(window);"
     }
 }

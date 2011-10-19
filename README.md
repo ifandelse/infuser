@@ -1,7 +1,7 @@
-# fetcher
+# infuser
 
 ## What is it?
-Fetcher is a JavaScript library you can use to retrieve templates (or other files) asynchronously (or synchronously, if you prefer).
+infuser is a JavaScript library you can use to retrieve templates (or other files) asynchronously (or synchronously, if you prefer).
 
 ## Why would I use it?
 * It provides a consistent way to access external view data from the client.
@@ -20,15 +20,15 @@ JavaScript:
     // Pulling static content
     // When the DOM is ready...
     $(function(){
-        // Tell fetcher's configuration to look for a templates directory if this page requests any templates
-        fetcher.config.templateUrl= "./templates",
-        // Tell fetcher's configuration to look for templates with an ".html" suffix (this is a default value, just showing as an example)
-        fetcher.config.templateSuffix= ".html"
-        // Tell fetcher's configuration to look for templates with a "tmpl_" prefix
-        fetcher.config.templatePrefix = "tmpl_";
+        // Tell infuser's configuration to look for a templates directory if this page requests any templates
+        infuser.config.templateUrl= "./templates",
+        // Tell infuser's configuration to look for templates with an ".html" suffix (this is a default value, just showing as an example)
+        infuser.config.templateSuffix= ".html"
+        // Tell infuser's configuration to look for templates with a "tmpl_" prefix
+        infuser.config.templatePrefix = "tmpl_";
         // Now - wire up a click event handler that asynchronously fetches a static html file and appends it to an element
         $('#btnTemplate').click(function(){
-            fetcher.fetch("HelloWorld", function(template){
+            infuser.fetch("HelloWorld", function(template){
                 $("#target").hide();
                 $("#target").children().remove().end();
                 $("#target").append($(template)).fadeIn();
@@ -40,8 +40,8 @@ JavaScript:
     var model = { names: ["Ronald", "George", "William", "Richard"] };
     $(function(){
         $('#btnTemplate').click(function(){
-            fetcher.config.templateUrl= "./templates",
-            fetcher.fetch("Example", function(template){
+            infuser.config.templateUrl= "./templates",
+            infuser.fetch("Example", function(template){
                 $("#target").hide();
                 $("#target").children().remove().end();
                 var div = $("<div />");
@@ -52,7 +52,7 @@ JavaScript:
     });
 
 ## What about dependencies?
-Fetcher takes a dependency on jQuery (1.4 or greater).
+infuser takes a dependency on jQuery (1.4 or greater).
 
 In order to run the samples under the example folder, you need to:
 
