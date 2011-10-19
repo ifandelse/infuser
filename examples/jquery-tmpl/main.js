@@ -13,7 +13,7 @@ var toggled = false,
 $(function(){
     $('#btnTemplate').click(function(){
         infuser.config.templateUrl= "./templates",
-        infuser.fetch("Example", function(template){
+        infuser.get("Example", function(template){
             $("#target").hide();
             $("#target").children().remove().end();
             var div = $("<div />");

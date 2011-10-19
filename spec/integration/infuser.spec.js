@@ -1,30 +1,30 @@
-QUnit.specify("fetcher.js", function(){
+QUnit.specify("infuser.js", function(){
     describe("library", function(){
         before(function(){
-            fetcher.config.templatePrefix = "tmpl";
-            fetcher.config.templateUrl = "./templates";
+            infuser.config.templatePrefix = "tmpl";
+            infuser.config.templateUrl = "./templates";
         });
         describe("When retrieving a template synchronously", function(){
             before(function(){
-                fetcher.fetchSync("Silly");
+                infuser.getSync("Silly");
             });
             it("Should retrieve a template", function(){
-                assert(fetcher.store.templates.Silly).isNotNull();
+                assert(infuser.store.templates.Silly).isNotNull();
             });
         });
         after(function(){
-            fetcher.fetch("Stupid", asyncTest)
+            infuser.get("Stupid", asyncTest)
         });
     });
 });
 
 var asyncTest = function(template){
     var tmpl = template;
-    QUnit.specify("fetcher.js", function(){
+    QUnit.specify("infuser.js", function(){
         describe("library", function(){
             describe("When retrieving a template asynchronously", function(){
                 it("Should retrieve a template", function(){
-                    assert(fetcher.store.templates.Stupid).isNotNull();
+                    assert(infuser.store.templates.Stupid).isNotNull();
                 });
             });
         });

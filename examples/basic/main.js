@@ -3,7 +3,7 @@ var toggled = false;
 $(function(){
     $('#btnTemplate').click(function(){
         infuser.config.templateUrl= "./templates",
-        infuser.fetch("HelloWorld", function(template){
+        infuser.get("HelloWorld", function(template){
             $("#target").hide();
             $("#target").children().remove().end();
             $("#target").append($(template)).fadeIn();

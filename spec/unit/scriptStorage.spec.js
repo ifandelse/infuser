@@ -1,4 +1,4 @@
-QUnit.specify("fetcher.js", function(){
+QUnit.specify("infuser.js", function(){
     describe("scriptStorage", function(){
         describe("when calling storeTemplate", function(){
             before(function(){

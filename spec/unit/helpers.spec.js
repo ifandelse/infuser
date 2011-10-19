@@ -1,4 +1,4 @@
-QUnit.specify("fetcher.js", function(){
+QUnit.specify("infuser.js", function(){
     describe("helpers", function(){
         describe("when calling getTemplatePath", function(){
             var result;
