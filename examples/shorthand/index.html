@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>jQuery-tmpl Shorthand Syntax Example</title>
+    <script type="text/javascript" src="../../ext/jquery-1.5.2.js"></script>
+    <script type="text/javascript" src="../../lib/infuser.js"></script>
+    <script type="text/javascript" src="jquery.tmpl.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        ul {
+            display: inline-block;
+        }
+
+        li {
+            vertical-align: top;
+            display: inline-block;
+            list-style-type: none;
+            margin-right: 30px;
+        }
+        
+        fieldset {
+            text-align: center;
+            background-color: #dcdcdc;
+            margin-top: 20px;
+            border: 1pt dashed #696969;
+            width: 300px;
+            border-radius: 10px;
+        }
+
+        .menu {
+            margin-top: 20px;
+            border: 1pt solid #696969;
+            width: 300px;
+            border-radius: 10px;
+            padding: 10px;
+        }
+        .menu li {
+            display: list-item;
+            list-style-type: disc;
+        }
+    </style>
+</head>
+<body>
+    <p>Try this in Chrome, while watching requests on the "Network" tab of the developer tools.</p>
+    <ul class="container">
+        <li class="ex">
+            <div>
+                <div id="msgPlain">The next click of the button will request the template asynchronously</div>
+                <input id="btnPlain" type="button" value="Load Template">
+            </div>
+            <div id="targetPlain"></div>
+        <li>
+        <li class="ex">
+            <div>
+                <div id="msgFancy">The next click of the button will request the template asynchronously</div>
+                <input id="btnFancy" type="button" value="Load Template With Effects">
+            </div>
+            <div id="targetFancy"></div>
+        <li>
+    </ul>
+</body>
+</html>

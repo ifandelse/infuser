@@ -1,3 +1,17 @@
+var NO_OP = function() { },
+    defaultRenderOptions = {
+        preRender: NO_OP,
+        render: function(target, template) {
+            if($(target).children().length === 0) {
+                $(target).append($(template));
+            }
+            else {
+                $(target).children().replaceWith($(template));
+            }
+        },
+        postRender: NO_OP
+    };
+
 var infuser = {
     storageOptions: {
         hash: hashStorage,
@@ -9,7 +23,8 @@ var infuser = {
     config: {
         templateUrl: "",
         templateSuffix: ".html",
-        templatePrefix: ""
+        templatePrefix: "",
+        renderInstruction: NO_OP
     },
 
     get: function(templateId, callback) {
@@ -64,5 +79,14 @@ var infuser = {
             }
         }
         return template;
+    },
+
+    infuse: function(templateId, targetDomElement, renderOptions) {
+        var options = $.extend({}, defaultRenderOptions, renderOptions);
+        this.get(templateId, function(template) {
+            options.preRender(targetDomElement);
+            options.render(targetDomElement, template);
+            options.postRender(targetDomElement);
+        });
     }
 };
