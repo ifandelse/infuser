@@ -48,6 +48,27 @@ JavaScript:
         });
     });
 
+    // Pulling a template and rendering it to a target DOM element all in one call
+    $('#btnPlain').click(function(){
+        // Shorthand syntax allows you to retrieve the template, and attach to target DOM element all in one call
+        infuser.infuse("HelloWorld", $("#targetPlain"));
+    });
+
+    // Pulling a template and render it to a target DOM element, providing pre- and post-render callbacks
+    // and also overriding the default render behavior (in order to bind a jquery-tmpl before attaching to DOM)
+    $('#btnFancy').click(function(){
+        // Shorthand syntax also allows you to specify preRender and postRender callbacks, as well as a render override
+        infuser.infuse(
+            "Example",
+            $("#targetFancy"),
+            {
+                preRender: function(target) { $(target).children().remove().end().fadeOut().hide(); },
+                render:    function(target, template) { $(target).append($.tmpl(template, model)).slideDown('slow'); },
+                postRender: toggleFancy
+            }
+        );
+    });
+
 ## What about dependencies?
 Infuser takes a dependency on jQuery (1.4 or greater).
 
