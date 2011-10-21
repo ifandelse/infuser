@@ -27,7 +27,7 @@ var infuser = {
                         "success": helpers.templateGetSuccess(templateId, callback),
                         "error"  : helpers.templateGetError(templateId, templatePath, callback)
                       };
-            $.ajax(options);
+            trafficCop.direct(options);
         }
         else {
             callback(template);
