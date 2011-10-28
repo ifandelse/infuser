@@ -4,8 +4,11 @@ var toggled = false,
             "Example",
             $("#target"),
             {
-                render:    function(target, template) {
-                    $(target).append($.tmpl(template, menus[modelNum])).slideDown('slow');
+                preRender: function(target, template, setTemplate) {
+                    setTemplate($.tmpl(template, menus[modelNum]));
+                },
+                render: function(target, template) {
+                    $(target).append(template).slideDown('slow');
                 }
             }
         );

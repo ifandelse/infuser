@@ -31,8 +31,11 @@ $(function(){
             "Example",
             $("#targetFancy"),
             {
-                preRender: function(target) { $(target).children().remove().end().fadeOut().hide(); },
-                render:    function(target, template) { $(target).append($.tmpl(template, model)).slideDown('slow'); },
+                preRender: function(target, template, setTemplate) {
+                                $(target).children().remove().end().fadeOut().hide();
+                                setTemplate($.tmpl(template, model));
+                           },
+                render:    function(target, template) { $(target).append(template).slideDown('slow'); },
                 postRender: toggleFancy
             }
         );
