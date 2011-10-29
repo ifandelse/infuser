@@ -10,7 +10,8 @@ var infuser = {
         templateUrl: "",
         templateSuffix: ".html",
         templatePrefix: "",
-        renderInstruction: function(template, model) { return template; } // NO_OP
+        renderInstruction: function(template, model) { return template; }, // NO_OP
+        domTargetResolver: function(templateId) { return "#" + templateId } // DEFAULT MAPPING
     },
 
     get: function(templateId, callback) {
@@ -67,15 +68,16 @@ var infuser = {
         return template;
     },
 
-    infuse: function(templateId, targetDomElement, renderOptions) {
+    infuse: function(templateId, renderOptions) {
         var options = $.extend({}, defaultRenderOptions, renderOptions),
-            self = this;
+            self = this,
+            targetElement = options.targetSelector || self.config.domTargetResolver(templateId);
         self.get(templateId, function(template) {
             var _template = template;
-            options.preRender(targetDomElement, _template);
+            options.preRender(targetElement, _template);
             _template = self.config.renderInstruction(_template, options.model);
-            options.render(targetDomElement, _template);
-            options.postRender(targetDomElement);
+            options.render(targetElement, _template);
+            options.postRender(targetElement);
         });
     }
 };

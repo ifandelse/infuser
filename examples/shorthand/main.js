@@ -25,7 +25,7 @@ $(function(){
 
     $('#btnPlain').click(function(){
         // Shorthand syntax allows you to retrieve the template, and attach to target DOM element all in one call
-        infuser.infuse("HelloWorld", $("#targetPlain"), { postRender: togglePlain });
+        infuser.infuse("HelloWorld", { postRender: togglePlain, targetSelector: "#targetPlain" });
     });
 
     $('#btnFancy').click(function(){
@@ -33,8 +33,8 @@ $(function(){
         infuser
             .infuse(
                 "Example",
-                $("#targetFancy"),
                 {
+                    targetSelector: "#targetFancy",
                     model: model,
                     preRender: function(target, template) { $(target).children().remove().end().fadeOut().hide(); },
                     render:    function(target, template) { $(target).append(template).slideDown('slow'); },
