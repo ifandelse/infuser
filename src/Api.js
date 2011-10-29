@@ -10,7 +10,7 @@ var infuser = {
         templateUrl: "",
         templateSuffix: ".html",
         templatePrefix: "",
-        renderInstruction: NO_OP
+        renderInstruction: function(template, model) { return template; } // NO_OP
     },
 
     get: function(templateId, callback) {
@@ -68,10 +68,12 @@ var infuser = {
     },
 
     infuse: function(templateId, targetDomElement, renderOptions) {
-        var options = $.extend({}, defaultRenderOptions, renderOptions);
-        this.get(templateId, function(template) {
+        var options = $.extend({}, defaultRenderOptions, renderOptions),
+            self = this;
+        self.get(templateId, function(template) {
             var _template = template;
-            options.preRender(targetDomElement, _template, function(renderedTemplate) { _template = renderedTemplate; });
+            options.preRender(targetDomElement, _template);
+            _template = self.config.renderInstruction(_template, options.model);
             options.render(targetDomElement, _template);
             options.postRender(targetDomElement);
         });

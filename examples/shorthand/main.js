@@ -18,7 +18,10 @@ var toggled = false,
     };
 
 $(function(){
-    infuser.config.templateUrl= "./templates",
+    infuser.config.templateUrl= "./templates";
+    infuser.config.renderInstruction = function(template, model) {
+        return $.tmpl(template, model);
+    };
 
     $('#btnPlain').click(function(){
         // Shorthand syntax allows you to retrieve the template, and attach to target DOM element all in one call
@@ -27,17 +30,16 @@ $(function(){
 
     $('#btnFancy').click(function(){
         // Shorthand syntax also allows you to specify preRender and postRender callbacks, as well as a render override
-        infuser.infuse(
-            "Example",
-            $("#targetFancy"),
-            {
-                preRender: function(target, template, setTemplate) {
-                                $(target).children().remove().end().fadeOut().hide();
-                                setTemplate($.tmpl(template, model));
-                           },
-                render:    function(target, template) { $(target).append(template).slideDown('slow'); },
-                postRender: toggleFancy
-            }
+        infuser
+            .infuse(
+                "Example",
+                $("#targetFancy"),
+                {
+                    model: model,
+                    preRender: function(target, template) { $(target).children().remove().end().fadeOut().hide(); },
+                    render:    function(target, template) { $(target).append(template).slideDown('slow'); },
+                    postRender: toggleFancy
+                }
         );
     });
 });

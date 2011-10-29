@@ -4,9 +4,7 @@ var toggled = false,
             "Example",
             $("#target"),
             {
-                preRender: function(target, template, setTemplate) {
-                    setTemplate($.tmpl(template, menus[modelNum]));
-                },
+                model: menus[modelNum],
                 render: function(target, template) {
                     $(target).append(template).slideDown('slow');
                 }
@@ -16,6 +14,9 @@ var toggled = false,
 
 $(function(){
     infuser.config.templateUrl= "./templates",
+    infuser.config.renderInstruction = function(template, model) {
+        return $.tmpl(template, model);
+    };
 
     $('#btnTemplate').click(function(){
         $("#target").children().remove().end().fadeOut().hide();
