@@ -48,24 +48,35 @@ JavaScript:
         });
     });
 
-    // Pulling a template and rendering it to a target DOM element all in one call
+    // Telling infuser how to produce a rendered template with the template engine of your choice
+    infuser.config.renderInstruction = function(template, model) {
+        return $.tmpl(template, model);
+    };
+
+    // The 'infuse' method lets you retrieve, render and attach to the DOM in one call
+    // It takes a template name and an options hash which can contain:
+    // preRender      - called before the template is 'rendered/attached' to the DOM
+    // render         - can be used to override the default rendering behavior for infuser
+    // postRender     - called after the template is rendered/attached to the DOM
+    // model          - option javascript object to be used to bind to a data-driven template
+    // targetSelector - CSS selector which resolves the target element to be used when rendering the template
+    // if you don't provide a targetSelector, infuser will try to find a target using the behavior defined
+    // in infuser.config.domTargetResolver (default behavior is finding a DOM element with an id matching template name)
     $('#btnPlain').click(function(){
-        // Shorthand syntax allows you to retrieve the template, and attach to target DOM element all in one call
-        infuser.infuse("HelloWorld", $("#targetPlain"));
+        infuser.infuse("HelloWorld", { postRender: togglePlain, targetSelector: "#targetPlain" });
     });
 
-    // Pulling a template and render it to a target DOM element, providing pre- and post-render callbacks
-    // and also overriding the default render behavior (in order to bind a jquery-tmpl before attaching to DOM)
     $('#btnFancy').click(function(){
-        // Shorthand syntax also allows you to specify preRender and postRender callbacks, as well as a render override
-        infuser.infuse(
-            "Example",
-            $("#targetFancy"),
-            {
-                preRender: function(target) { $(target).children().remove().end().fadeOut().hide(); },
-                render:    function(target, template) { $(target).append($.tmpl(template, model)).slideDown('slow'); },
-                postRender: toggleFancy
-            }
+        infuser
+            .infuse(
+                "Example",
+                {
+                    targetSelector: "#targetFancy",
+                    model: model,
+                    preRender: function(target, template) { $(target).children().remove().end().fadeOut().hide(); },
+                    render:    function(target, template) { $(target).append(template).slideDown('slow'); },
+                    postRender: toggleFancy
+                }
         );
     });
 
