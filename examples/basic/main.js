@@ -1,5 +1,7 @@
 var toggled = false;
 
+// Note - using "get" is perfectly reasonable, but a more complete approach can be
+// seen under the "shorthand" and "trafficcop" examples
 $(function(){
     $('#btnTemplate').click(function(){
         infuser.config.templateUrl= "./templates",

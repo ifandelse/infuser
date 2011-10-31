@@ -19,7 +19,7 @@ var toggled = false,
 
 $(function(){
     infuser.config.templateUrl= "./templates";
-    infuser.config.renderInstruction = function(template, model) {
+    infuser.defaults.renderInstruction = function(template, model) {
         return $.tmpl(template, model);
     };
 
