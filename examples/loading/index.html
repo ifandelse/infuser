@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Loading Template Use Example</title>
+    <script type="text/javascript" src="../../ext/jquery-1.5.2.js"></script>
+    <script type="text/javascript" src="../../lib/infuser.js"></script>
+    <script type="text/javascript" src="jquery.tmpl.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .menu {
+            margin-top: 20px;
+            border: 1pt solid #696969;
+            width: 300px;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .infuser-loading {
+            padding:  10px;
+        }
+        .infuser-loading img {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <p>Try this in Chrome, while watching requests on the "Network" tab of the developer tools.</p>
+    <div>
+        <input id="btnTemplate" type="button" value="Show Me A jQuery template!">
+        <span id="msg">The next click of the button will request the template asynchronously</span>
+    </div>
+    <div id="target"></div>
+</body>
+</html>
