@@ -48,20 +48,26 @@ JavaScript:
         });
     });
 
-    // Telling infuser how to produce a rendered template with the template engine of your choice
-    infuser.config.renderInstruction = function(template, model) {
-        return $.tmpl(template, model);
+    // Tell infuser how to produce a rendered template with the template engine of your choice
+    infuser.defaults.renderInstruction = function(template, model) {
+        return $.tmpl(template, model); //jquery-tmpl
     };
 
     // The 'infuse' method lets you retrieve, render and attach to the DOM in one call
     // It takes a template name and an options hash which can contain:
-    // preRender      - called before the template is 'rendered/attached' to the DOM
-    // render         - can be used to override the default rendering behavior for infuser
-    // postRender     - called after the template is rendered/attached to the DOM
-    // model          - option javascript object to be used to bind to a data-driven template
-    // targetSelector - CSS selector which resolves the target element to be used when rendering the template
-    // if you don't provide a targetSelector, infuser will try to find a target using the behavior defined
-    // in infuser.config.domTargetResolver (default behavior is finding a DOM element with an id matching template name)
+    // preRender          - called before the template is 'rendered/attached' to the DOM
+    // render             - can be used to override the default rendering behavior for infuser
+    // postRender         - called after the template is rendered/attached to the DOM
+    // model              - option javascript object to be used to bind to a data-driven template
+    // useLoadingTempalte - true/false option to display a loading template (defined below)
+    // loadingTemplate    - object defining a template that can be displayed while the requested template is retrieved
+    //                      "loadingTemplate.content" - html content of the loading template
+    //                      "loadingTemplate.transitionIn(target)"  - enables hooks into rendering the loading template
+    //                      "loadingTemplate.transitionOut(target)" - enables hooks into how to remove loading template
+    // targetSelector     - CSS selector which resolves the target element to be used when rendering the template
+    //                      If you don't provide a targetSelector, infuser will try to find a target using the behavior
+    //                      defined in infuser.defaults.domTargetResolver (default behavior is finding a DOM element
+    //                      with an id matching template name)
     $('#btnPlain').click(function(){
         infuser.infuse("HelloWorld", { postRender: togglePlain, targetSelector: "#targetPlain" });
     });
