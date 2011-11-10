@@ -6,9 +6,10 @@ $(function(){
     $('#btnTemplate').click(function(){
         infuser.config.templateUrl= "./templates",
         infuser.get("HelloWorld", function(template){
-            $("#target").hide();
-            $("#target").children().remove().end();
-            $("#target").append($(template)).fadeIn();
+            var target = $("#target");
+            target.hide();
+            target.children().remove().end();
+            target.append($(template)).fadeIn();
             if(!toggled) {
                 $("#msg").text("The next click will use the locally cached template");
             }

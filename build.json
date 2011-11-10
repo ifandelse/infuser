@@ -6,7 +6,7 @@
     "gzip": {},
     "extensions": { "uglify": "min", "gzip": "gz" },
     "wrap": {
-        "prefix": "(function(global, undefined) {",
-        "suffix": "global.infuser = infuser; })(window);"
+        "prefix": "(function($, global, undefined) {",
+        "suffix": "global.infuser = infuser; })(jQuery, window);"
     }
 }
