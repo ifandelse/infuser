@@ -22,8 +22,7 @@ $(function(){
             return _.template(template, model);
         };
         infuser.defaults.preRender = function(target, template) {
-            $(target).hide();
-            $(target).children().remove().end();
+            $(target).hide().children().remove();
         };
         infuser.defaults.render = function(target, template) {
             $(target).append($(template)).fadeIn();

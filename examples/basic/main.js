@@ -7,8 +7,7 @@ $(function(){
         infuser.config.templateUrl= "./templates",
         infuser.get("HelloWorld", function(template){
             var target = $("#target");
-            target.hide();
-            target.children().remove().end();
+            target.hide().children().remove();
             target.append($(template)).fadeIn();
             if(!toggled) {
                 $("#msg").text("The next click will use the locally cached template");

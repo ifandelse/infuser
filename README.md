@@ -26,9 +26,9 @@ JavaScript:
         // Now - wire up a click event handler that asynchronously fetches a static html file and appends it to an element
         $('#btnTemplate').click(function(){
             infuser.get("HelloWorld", function(template){
-                $("#target").hide();
-                $("#target").children().remove().end();
-                $("#target").append($(template)).fadeIn();
+                var tgt = $("#target");
+                target.hide().children().remove();
+                tgt.append($(template)).fadeIn();
             })
         });
     });
@@ -39,11 +39,11 @@ JavaScript:
         $('#btnTemplate').click(function(){
             infuser.config.templateUrl= "./templates",
             infuser.get("Example", function(template){
-                $("#target").hide();
-                $("#target").children().remove().end();
+                var tgt = $("#target");
+                target.hide().children().remove();
                 var div = $("<div />");
                 $.tmpl(template, model).appendTo(div);
-                $("#target").append(div).fadeIn();
+                tgt.append(div).fadeIn();
             })
         });
     });
