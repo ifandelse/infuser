@@ -20,7 +20,7 @@ $(function(){
         infuser.config.templateUrl= "./templates";
         infuser.defaults.loadingTemplate.content = "<div class='infuser-loading'><img src='./images/ajax-loader.gif'>Loading...</div>"
         infuser.defaults.loadingTemplate.transitionOut = function() {};
-        infuser.defaults.renderInstruction = function(template, model) {
+        infuser.defaults.bindingInstruction = function(template, model) {
             return $.tmpl(template, model);
         };
         infuser.infuse("Example", {

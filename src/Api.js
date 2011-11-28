@@ -38,7 +38,7 @@ var infuser = {
                                     tgt.children().replaceWith($(template));
                                 }
                             },
-        renderInstruction:  function(template, model) { return template; }, // NO_OP effectively by default
+        bindingInstruction:  function(template, model) { return template; }, // NO_OP effectively by default
         useLoadingTemplate: true // true/false
     },
 
@@ -56,7 +56,7 @@ var infuser = {
                         "success": helpers.templateGetSuccess(templateId, callback),
                         "error"  : helpers.templateGetError(templateId, templatePath, callback)
                       };
-            trafficCop.direct(options);
+            $.trafficCop(options);
         }
         else {
             callback(template);
@@ -106,7 +106,7 @@ var infuser = {
         self.get(templateId, function(template) {
             var _template = template;
             options.preRender(targetElement, _template);
-            _template = options.renderInstruction(_template, options.model);
+            _template = options.bindingInstruction(_template, options.model);
             if(options.useLoadingTemplate) {
                 options.loadingTemplate.transitionOut(targetElement);
             }

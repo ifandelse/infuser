@@ -49,7 +49,7 @@ JavaScript:
     });
 
     // Tell infuser how to produce a rendered template with the template engine of your choice
-    infuser.defaults.renderInstruction = function(template, model) {
+    infuser.defaults.bindingInstruction = function(template, model) {
         return $.tmpl(template, model); //jquery-tmpl
     };
 
@@ -87,7 +87,7 @@ JavaScript:
     });
 
 ## What about dependencies?
-Infuser takes a dependency on jQuery (1.4 or greater).
+Infuser takes a dependency on jQuery (1.4 or greater) and Traffic Cop (see https://github.com/ifandelse/trafficcop).
 
 In order to run the samples under the example folder, you need to:
 

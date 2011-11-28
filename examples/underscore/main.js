@@ -18,7 +18,7 @@ $(function(){
         // but we're setting the defaults here to show how they could be applied
         // to every template being rendered on the page, with the option of
         // overriding in the options hash passed into "infuse"
-        infuser.defaults.renderInstruction = function(template, model) {
+        infuser.defaults.bindingInstruction = function(template, model) {
             return _.template(template, model);
         };
         infuser.defaults.preRender = function(target, template) {
