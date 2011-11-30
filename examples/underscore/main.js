@@ -29,7 +29,7 @@ $(function(){
         };
         infuser.infuse("Example", {
             model: model,
-            targetSelector: "#target",
+            target: "#target",
             postRender: function(target) {
                 if(!toggled) {
                     $("#msg").text("The next click will use the locally cached template");

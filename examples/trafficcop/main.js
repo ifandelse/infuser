@@ -3,7 +3,7 @@ var toggled = false,
         infuser.infuse(
             "Example",
             {
-                targetSelector: "#target",
+                target: "#target",
                 model: menus[modelNum],
                 render: function(target, template) {
                     $(target).append(template).slideDown('slow');

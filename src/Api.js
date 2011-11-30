@@ -13,7 +13,7 @@ var infuser = {
     },
 
     defaults: {
-        domTargetResolver:  function(templateId) { return "#" + templateId }, // DEFAULT MAPPING
+        target:  function(templateId) { return "#" + templateId }, // DEFAULT MAPPING
         loadingTemplate:    {
                                 content:        '<div class="infuser-loading">Loading...</div>',
                                 transitionIn:   function(target) {
@@ -99,7 +99,7 @@ var infuser = {
     infuse: function(templateId, renderOptions) {
         var self = this,
             options = $.extend({}, self.defaults, renderOptions),
-            targetElement = options.targetSelector || options.domTargetResolver(templateId);
+            targetElement = typeof options.target === 'function' ? options.target(templateId) : options.target;
         if(options.useLoadingTemplate) {
             options.loadingTemplate.transitionIn(targetElement);
         }

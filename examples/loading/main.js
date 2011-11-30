@@ -24,7 +24,7 @@ $(function(){
             return $.tmpl(template, model);
         };
         infuser.infuse("Example", {
-            targetSelector: "#target",
+            target: "#target",
             render: function(target, template) {
                 // really ugly way to simulate long running template retrieval
                 setTimeout(function() { origRender(target, template); }, 4000);
