@@ -7,35 +7,35 @@ var infuser = {
     store: hashStorage,
 
     defaults: {
-        bindingInstruction:  function(template, model) { return template; }, // NO_OP effectively by default
+        bindingInstruction: function(template, model) { return template; }, // NO_OP effectively by default
         loadingTemplate:    {
-            content:        '<div class="infuser-loading">Loading...</div>',
-            transitionIn:   function(target) {
-                var self = this,
-                tgt = $(target);
-                tgt.hide();
-                tgt.html(self.content);
-                tgt.fadeIn();
-            },
-            transitionOut:  function(target) {
-                $(target).html("");
-            }
-        },
-        postRender: function(targetElement) { }, // NO_OP effectively by default
-        preRender: function(targetElement, template) { }, // NO_OP effectively by default
-        render: function(target, template) {
-            var tgt = $(target);
-            if(tgt.children().length === 0) {
-                tgt.append($(template));
-            }
-            else {
-                tgt.children().replaceWith($(template));
-            }
-        },
-        target:  function(templateId) { return "#" + templateId }, // DEFAULT MAPPING
-        templateUrl: "",
-        templateSuffix: ".html",
-        templatePrefix: "",
+                                content:        '<div class="infuser-loading">Loading...</div>',
+                                transitionIn:   function(target) {
+                                    var self = this,
+                                    tgt = $(target);
+                                    tgt.hide();
+                                    tgt.html(self.content);
+                                    tgt.fadeIn();
+                                },
+                                transitionOut:  function(target) {
+                                    $(target).html("");
+                                }
+                            },
+        postRender:         function(targetElement) { }, // NO_OP effectively by default
+        preRender:          function(targetElement, template) { }, // NO_OP effectively by default
+        render:             function(target, template) {
+                                var tgt = $(target);
+                                if(tgt.children().length === 0) {
+                                    tgt.append($(template));
+                                }
+                                else {
+                                    tgt.children().replaceWith($(template));
+                                }
+                            },
+        target:             function(templateId) { return "#" + templateId }, // DEFAULT MAPPING
+        templateUrl:        "",
+        templateSuffix:     ".html",
+        templatePrefix:     "",
         useLoadingTemplate: true // true/false
     },
 
