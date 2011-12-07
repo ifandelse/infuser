@@ -18,7 +18,7 @@ var toggled = false,
     };
 
 $(function(){
-    infuser.config.templateUrl= "./templates";
+    infuser.defaults.templateUrl= "./templates";
     infuser.defaults.useLoadingTemplate = false;
     infuser.defaults.bindingInstruction = function(template, model) {
         return $.tmpl(template, model);

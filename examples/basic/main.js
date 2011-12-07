@@ -4,7 +4,7 @@ var toggled = false;
 // seen under the "shorthand" and "trafficcop" examples
 $(function(){
     $('#btnTemplate').click(function(){
-        infuser.config.templateUrl= "./templates",
+        infuser.defaults.templateUrl= "./templates",
         infuser.get("HelloWorld", function(template){
             var target = $("#target");
             target.hide().children().remove();

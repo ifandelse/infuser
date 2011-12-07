@@ -1,8 +1,8 @@
 QUnit.specify("infuser.js", function(){
     describe("library", function(){
         before(function(){
-            infuser.config.templatePrefix = "tmpl";
-            infuser.config.templateUrl = "./templates";
+            infuser.defaults.templatePrefix = "tmpl";
+            infuser.defaults.templateUrl = "./templates";
         });
         describe("When retrieving a template synchronously", function(){
             before(function(){

@@ -17,7 +17,7 @@ $(function(){
         origRender = infuser.defaults.render;
 
     $('#btnTemplate').click(function(){
-        infuser.config.templateUrl= "./templates";
+        infuser.defaults.templateUrl= "./templates";
         infuser.defaults.loadingTemplate.content = "<div class='infuser-loading'><img src='./images/ajax-loader.gif'>Loading...</div>"
         infuser.defaults.loadingTemplate.transitionOut = function() {};
         infuser.defaults.bindingInstruction = function(template, model) {

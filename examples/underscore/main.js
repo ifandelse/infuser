@@ -12,7 +12,7 @@ var toggled = false,
 
 $(function(){
     $('#btnTemplate').click(function(){
-        infuser.config.templateUrl= "./templates";
+        infuser.defaults.templateUrl= "./templates";
         // the "infuser.defaults" assignments below could also be passed in
         // to the "infuse" method as part of the options hash (2nd argument)
         // but we're setting the defaults here to show how they could be applied
