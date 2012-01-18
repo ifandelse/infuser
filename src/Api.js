@@ -16,11 +16,10 @@ var infuser = {
         target:  function(templateId) { return "#" + templateId }, // DEFAULT MAPPING
         loadingTemplate:    {
                                 content:        '<div class="infuser-loading">Loading...</div>',
-                                transitionIn:   function(target) {
-                                                    var self = this,
-                                                        tgt = $(target);
+                                transitionIn:   function(target, content) {
+                                                    var tgt = $(target);
                                                     tgt.hide();
-                                                    tgt.html(self.content);
+                                                    tgt.html(content);
                                                     tgt.fadeIn();
                                                 },
                                 transitionOut:  function(target) {
@@ -101,7 +100,7 @@ var infuser = {
             options = $.extend({}, self.defaults, renderOptions),
             targetElement = typeof options.target === 'function' ? options.target(templateId) : options.target;
         if(options.useLoadingTemplate) {
-            options.loadingTemplate.transitionIn(targetElement);
+            options.loadingTemplate.transitionIn(targetElement, options.loadingTemplate.content);
         }
         self.get(templateId, function(template) {
             var _template = template;
