@@ -1,0 +1,12 @@
+{
+    "source": "src",
+    "output": "lib/amd",
+    "lint": {},
+    "uglify": {},
+    "gzip": {},
+    "extensions": { "uglify": "min", "gzip": "gz" },
+    "wrap": {
+        "prefix": "define(['jquery'],function($) { // You might need to set up a config for require.js for the jquery dependency to work, or replace it with an absolute path",
+        "suffix": "return infuser; });"
+    }
+}

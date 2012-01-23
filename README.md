@@ -1,7 +1,7 @@
 # Infuser
 
 ## What is it?
-Infuser is a JavaScript library you can use to retrieve templates (or other files) asynchronously (or synchronously, if you prefer).
+Infuser is a JavaScript library you can use to retrieve templates (or other files) asynchronously (or synchronously, if you must).
 
 ## Why would I use it?
 * It provides a consistent way to access external view data from the client.
@@ -20,9 +20,9 @@ JavaScript:
     // Pulling static content
     // When the DOM is ready...
     $(function(){
-        infuser.config.templateUrl= "./templates",// look for templates in a "templates" directory (relative to this page)
-        infuser.config.templateSuffix= ".html"    // look for templates with an ".html" suffix (this is a default value, just showing as an example)
-        infuser.config.templatePrefix = "tmpl_";  // look for templates with a "tmpl_" prefix
+        infuser.defaults.templateUrl= "./templates",// look for templates in a "templates" directory (relative to this page)
+        infuser.defaults.templateSuffix= ".html"    // look for templates with an ".html" suffix (this is a default value, just showing as an example)
+        infuser.defaults.templatePrefix = "tmpl_";  // look for templates with a "tmpl_" prefix
         // Now - wire up a click event handler that asynchronously fetches a static html file and appends it to an element
         $('#btnTemplate').click(function(){
             infuser.get("HelloWorld", function(template){
@@ -37,7 +37,7 @@ JavaScript:
     var model = { names: ["Ronald", "George", "William", "Richard"] };
     $(function(){
         $('#btnTemplate').click(function(){
-            infuser.config.templateUrl= "./templates",
+            infuser.defaults.templateUrl= "./templates",
             infuser.get("Example", function(template){
                 var tgt = $("#target");
                 target.hide().children().remove();
@@ -54,7 +54,7 @@ JavaScript:
     };
 
     // The 'infuse' method lets you retrieve, render and attach to the DOM in one call
-    // It takes a template name and an options hash which can contain:
+    // It takes a template name and an options object which can contain:
     // preRender          - called before the template is 'rendered/attached' to the DOM
     // render             - can be used to override the default rendering behavior for infuser
     // postRender         - called after the template is rendered/attached to the DOM
@@ -68,6 +68,7 @@ JavaScript:
     //                      If you don't provide a targetSelector, infuser will try to find a target using the behavior
     //                      defined in infuser.defaults.domTargetResolver (default behavior is finding a DOM element
     //                      with an id matching template name)
+    // you can also just pass in the options object and include "templateId" as one of the members
     $('#btnPlain').click(function(){
         infuser.infuse("HelloWorld", { postRender: togglePlain, targetSelector: "#targetPlain" });
     });
@@ -87,7 +88,7 @@ JavaScript:
     });
 
 ## What about dependencies?
-Infuser takes a dependency on jQuery (1.4 or greater) and Traffic Cop (see https://github.com/ifandelse/trafficcop).
+Infuser takes a dependency on jQuery (1.5.2 or greater) and Traffic Cop (see https://github.com/ifandelse/trafficcop).
 
 In order to run the samples under the example folder, you need to:
 

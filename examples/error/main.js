@@ -2,7 +2,7 @@ var toggled = false;
 
 $(function(){
     $('#btnTemplate').click(function(){
-        infuser.config.templateUrl= "./templates",
+        infuser.defaults.templateUrl= "./templates",
         infuser.get("HelloWorld", function(template){
             var tgt = $("#target");
             tgt.hide().children().remove();

@@ -18,17 +18,42 @@ $.mockjax({
 
 module('infuser.js');
 
-test("When retrieving a template synchronously", function() {
-    infuser.config.templatePrefix = "tmpl";
-    infuser.config.templateUrl = "./templates";
+test("When retrieving a template synchronously - passing only template ID", function() {
+    infuser.store.purge();
+    infuser.defaults.templatePrefix = "tmpl";
+    infuser.defaults.templateUrl = "./templates";
     infuser.getSync("Silly");
     equal(infuser.store.templates["Silly"],"<H1>This is just silly</H1>", "Template Text Matched Expected");
 });
 
-asyncTest("When retrieving a template asynchronously", function(){
-    infuser.config.templatePrefix = "tmpl";
-    infuser.config.templateUrl = "./templates";
+test("When retrieving a template synchronously - passing an options object", function() {
+    infuser.store.purge();
+    infuser.getSync({
+        templateId: "Silly",
+        templatePrefix: "tmpl",
+        templateUrl: "./templates"
+    });
+    equal(infuser.store.templates["Silly"],"<H1>This is just silly</H1>", "Template Text Matched Expected");
+});
+
+asyncTest("When retrieving a template asynchronously - passing only template ID", function(){
+    infuser.store.purge();
+    infuser.defaults.templatePrefix = "tmpl";
+    infuser.defaults.templateUrl = "./templates";
     infuser.get("Stupid", function(template){
+        start();
+        equals(infuser.store.templates["Stupid"], "<div><em>And this is just stupid....</em></div>", "Stored Template Text Matched Expected");
+        equals(template, "<div><em>And this is just stupid....</em></div>", "Param Template Text Matched Expected");
+    });
+});
+
+asyncTest("When retrieving a template asynchronously - passing an options object", function(){
+    infuser.store.purge();
+    infuser.get({
+        templateId: "Stupid",
+        templatePrefix: "tmpl",
+        templateUrl: "./templates"
+    }, function(template){
         start();
         equals(infuser.store.templates["Stupid"], "<div><em>And this is just stupid....</em></div>", "Stored Template Text Matched Expected");
         equals(template, "<div><em>And this is just stupid....</em></div>", "Param Template Text Matched Expected");
@@ -46,9 +71,9 @@ asyncTest("When calling infuse on static template", function(){
         renderTargetArg,
         renderTemplateArg,
         postRenderTargetArg;
-
-    infuser.config.templatePrefix = "tmpl";
-    infuser.config.templateUrl = "./templates";
+    infuser.store.purge();
+    infuser.defaults.templatePrefix = "tmpl";
+    infuser.defaults.templateUrl = "./templates";
     infuser.infuse("Silly", {
         target: "#nonExistent",
         model: { bacon: "sizzle" },loadingTemplate:    {
@@ -102,9 +127,9 @@ asyncTest("When calling infuse on an underscore template", function(){
         renderTargetArg,
         renderTemplateArg,
         postRenderTargetArg;
-
-    infuser.config.templatePrefix = "tmpl";
-    infuser.config.templateUrl = "./templates";
+    infuser.store.purge();
+    infuser.defaults.templatePrefix = "tmpl";
+    infuser.defaults.templateUrl = "./templates";
     infuser.infuse("Underscore", {
         target: "#nonExistent",
         model: { bacon: "sizzle" },loadingTemplate:    {

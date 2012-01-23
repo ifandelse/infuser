@@ -1,8 +1,8 @@
 var helpers = {
-    getTemplatePath: function(templateId) {
-        var templateFile = infuser.config.templatePrefix + templateId + infuser.config.templateSuffix;
-        return infuser.config.templateUrl === undefined || infuser.config.templateUrl === "" ?
-                templateFile : infuser.config.templateUrl + "/" + templateFile;
+    getTemplatePath: function(templateOptions) {
+        var templateFile = templateOptions.templatePrefix + templateOptions.templateId + templateOptions.templateSuffix;
+        return templateOptions.templateUrl === undefined || templateOptions.templateUrl === "" ?
+                templateFile : templateOptions.templateUrl + "/" + templateFile;
     },
     templateGetSuccess: function(templateId, callback) {
         return function(response) {

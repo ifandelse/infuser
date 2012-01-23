@@ -11,7 +11,6 @@ var toggled = false,
     };
 
 $(function(){
-    infuser.config.templateUrl= "./templates";
     infuser.defaults = $.extend({}, infuser.defaults, {
         bindingInstruction: function(template, model) {
             return $.tmpl(template, model);
@@ -21,7 +20,8 @@ $(function(){
         },
         render: function(target, template) {
             $(target).append(template).fadeIn();
-        }
+        },
+        templateUrl: "./templates"
     });
 
     $('#btnTemplate').click(function(){
