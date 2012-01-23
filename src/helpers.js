@@ -19,5 +19,9 @@ var helpers = {
             infuser.store.storeTemplate(templateId, templateHtml);
             callback(infuser.store.getTemplate(templateId));
         };
+    },
+    getAjaxOptions: function(templateOptions) {
+
     }
-};
+},
+infuserOptions = ['target','loadingTemplate','postRender','preRender','render','bindingInstruction','useLoadingTemplate','model','templateUrl','templateSuffix','templatePrefix',''];
