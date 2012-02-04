@@ -1,3 +1,5 @@
+/*
+// Mockjax isn't support synchronous testing, so commenting it out for now until I determin if I'm keeping "getSync()"
 $.mockjax({
     url: './templates/tmplSilly.html',
     dataType: 'html',
@@ -14,7 +16,7 @@ $.mockjax({
     url: './templates/tmplUnderscore.html',
     dataType: 'html',
     responseText: '<div>The bacon says <%= bacon %></div>'
-});
+});*/
 
 module('infuser.js');
 
@@ -23,7 +25,7 @@ test("When retrieving a template synchronously - passing only template ID", func
     infuser.defaults.templatePrefix = "tmpl";
     infuser.defaults.templateUrl = "./templates";
     infuser.getSync("Silly");
-    equal(infuser.store.templates["Silly"],"<H1>This is just silly</H1>", "Template Text Matched Expected");
+    equal(infuser.store.templates["./templates/tmplSilly.html"],"<H1>This is just silly</H1>", "Template Text Matched Expected");
 });
 
 test("When retrieving a template synchronously - passing an options object", function() {
@@ -33,7 +35,7 @@ test("When retrieving a template synchronously - passing an options object", fun
         templatePrefix: "tmpl",
         templateUrl: "./templates"
     });
-    equal(infuser.store.templates["Silly"],"<H1>This is just silly</H1>", "Template Text Matched Expected");
+    equal(infuser.store.templates["./templates/tmplSilly.html"],"<H1>This is just silly</H1>", "Template Text Matched Expected");
 });
 
 asyncTest("When retrieving a template asynchronously - passing only template ID", function(){
@@ -42,7 +44,7 @@ asyncTest("When retrieving a template asynchronously - passing only template ID"
     infuser.defaults.templateUrl = "./templates";
     infuser.get("Stupid", function(template){
         start();
-        equals(infuser.store.templates["Stupid"], "<div><em>And this is just stupid....</em></div>", "Stored Template Text Matched Expected");
+        equals(infuser.store.templates["./templates/tmplStupid.html"], "<div><em>And this is just stupid....</em></div>", "Stored Template Text Matched Expected");
         equals(template, "<div><em>And this is just stupid....</em></div>", "Param Template Text Matched Expected");
     });
 });
@@ -55,7 +57,7 @@ asyncTest("When retrieving a template asynchronously - passing an options object
         templateUrl: "./templates"
     }, function(template){
         start();
-        equals(infuser.store.templates["Stupid"], "<div><em>And this is just stupid....</em></div>", "Stored Template Text Matched Expected");
+        equals(infuser.store.templates["./templates/tmplStupid.html"], "<div><em>And this is just stupid....</em></div>", "Stored Template Text Matched Expected");
         equals(template, "<div><em>And this is just stupid....</em></div>", "Param Template Text Matched Expected");
     });
 });
