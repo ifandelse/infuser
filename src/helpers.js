@@ -6,7 +6,8 @@ var helpers = {
     },
     templateGetSuccess: function(templateId, callback) {
         return function(response) {
-            infuser.store.storeTemplate(templateId, response);
+	        var _response = infuser.defaults.templatePreProcessor(response);
+            infuser.store.storeTemplate(templateId, _response);
             callback(infuser.store.getTemplate(templateId));
         };
     },

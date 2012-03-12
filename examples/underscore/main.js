@@ -18,7 +18,7 @@ $(function(){
         // to every template being rendered on the page, with the option of
         // overriding in the options hash passed into "infuse"
         infuser.defaults.bindingInstruction = function(template, model) {
-            return _.template(template, model);
+            return template(model);
         };
         infuser.defaults.preRender = function(target, template) {
             $(target).hide().children().remove();
@@ -26,6 +26,9 @@ $(function(){
         infuser.defaults.render = function(target, template) {
             $(target).append($(template)).fadeIn();
         };
+	    infuser.defaults.templatePreProcessor = function(template) {
+			return _.template(template);
+	    };
         infuser.infuse("Example", {
             model: model,
             target: "#target",
