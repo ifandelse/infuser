@@ -59,7 +59,7 @@ JavaScript:
     // render             - can be used to override the default rendering behavior for infuser
     // postRender         - called after the template is rendered/attached to the DOM
     // model              - option javascript object to be used to bind to a data-driven template
-    // useLoadingTempalte - true/false option to display a loading template (defined below)
+    // useLoadingTemplate - true/false option to display a loading template (defined below)
     // loadingTemplate    - object defining a template that can be displayed while the requested template is retrieved
     //                      "loadingTemplate.content" - html content of the loading template
     //                      "loadingTemplate.transitionIn(target)"  - enables hooks into rendering the loading template
