@@ -1,12 +1,24 @@
 {
-    "name": "infuser",
-    "version": "0.0.1",
-    "scripts": {
-        "test": "node nodetesthost.js"
+  "name": "infuser",
+  "version": "0.2.0",
+  "author": "Jim Cowart",
+  "scripts": {
+    "test": "node nodetesthost.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "express": "2.5.1",
+    "grunt": "~0.4.0",
+    "grunt-contrib-uglify": "~0.1.1",
+    "grunt-contrib-concat": "~0.1.2",
+    "grunt-contrib-compress": "~0.4.0"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
     },
-    "dependencies": {
-    },
-    "devDependencies":{
-        "express": "2.5.1"
+    {
+      "type": "GPL"
     }
+  ]
 }
