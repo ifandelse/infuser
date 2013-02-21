@@ -92,11 +92,11 @@ Infuser takes a dependency on jQuery (1.5.2 or greater) and Traffic Cop (see htt
 
 In order to run the samples under the example folder, you need to:
 
-* Install Node.js, and then "npm install express".  Then browse to http://localhost:1581
+* Install Node.js, and then "npm install".  Then browse to http://localhost/spec/runner.html
 * If you're on windows, you could set up a virtual directory under IIS at the top level of this repository (top level, or the script refs will break!)
 
-Test dependencies (pick one & then browse to the spec/integration/runner.html or spec/unit/runner.html):
+Test dependencies (pick one & then browse to the spec/runner.html):
 
-* Node.js - run the nodetesthost.js file at root of repository
+* Node.js 
 * IIS (set up virtual directory at *root* of repository)
 * Other web server (just be sure and configure the hosting from the root of repo)

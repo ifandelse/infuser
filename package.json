@@ -1,0 +1,12 @@
+{
+    "name": "infuser",
+    "version": "0.0.1",
+    "scripts": {
+        "test": "node nodetesthost.js"
+    },
+    "dependencies": {
+    },
+    "devDependencies":{
+        "express": "2.5.1"
+    }
+}

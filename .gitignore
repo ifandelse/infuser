@@ -9,3 +9,4 @@ _ReSharper*
 desktop.ini
 .eprj
 .idea
+node_modules
