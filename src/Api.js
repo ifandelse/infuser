@@ -49,13 +49,13 @@ var infuser = {
 
     get: function(options, callback) {
         var templateOptions = $.extend({}, infuser.defaults, (typeof options === "object" ? options : { templateId: options })),
-            template;
+            template; 
         templateOptions.ajax.url = helpers.getTemplatePath(templateOptions);
         template = infuser.store.getTemplate(templateOptions.ajax.url);
         if(!template || $.inArray(templateOptions.ajax.url, errors) !== -1) {
             templateOptions.ajax.success = helpers.templateGetSuccess(templateOptions.ajax.url, callback);
             templateOptions.ajax.error = helpers.templateGetError(templateOptions.templateId, templateOptions.ajax.url, callback);
-            $.trafficCop(templateOptions.ajax);
+            trafficCop(templateOptions.ajax);
         }
         else {
             callback(template);

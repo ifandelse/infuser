@@ -1,0 +1,12 @@
+    return infuser;
+    };
+
+    if (typeof define === 'function' && define.amd){
+        define(['jquery', 'trafficCop'], function($, trafficCop){
+            return getInfuser($, trafficCop);
+        });
+    } else{
+        var global = (false || eval)('this');
+        global.infuser = getInfuser($ || jQuery);
+    }
+})();

@@ -13,11 +13,13 @@ module.exports = function(grunt) {
       dist: {
         src: [
           'src/VersionHeader.js',
+          'src/header.txt',
           'src/hashStorage.js',
-          'src/scriptStore.js',
+          'src/scriptStorage.js',
           'src/error.js',
           'src/helpers.js',
-          'src/Api.js'
+          'src/Api.js',
+          'src/footer.txt'
         ],
         dest: '<%= target.dist %>/<%= pkg.name %>.js'
       },
@@ -25,11 +27,13 @@ module.exports = function(grunt) {
         src: [
           'ext/TrafficCop.js',
           'src/VersionHeader.js',
+          'src/header.txt',
           'src/hashStorage.js',
-          'src/scriptStore.js',
+          'src/scriptStorage.js',
           'src/error.js',
           'src/helpers.js',
-          'src/Api.js'
+          'src/Api.js',
+          'src/footer.txt'
         ],
         dest: '<%= target.all %>/<%= pkg.name %>.js'
       }
